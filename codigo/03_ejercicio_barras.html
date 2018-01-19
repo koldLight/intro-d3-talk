@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Introducción D3.js</title>
+    <script src='https://d3js.org/d3.v4.min.js'></script>
+  </head>
+
+  <body>
+    <div id='grafico'>
+    </div>
+    <script>
+    // Definición del canvas y márgenes
+    const margin = { top: 20, right: 20, bottom: 20, left: 40 },
+          width  = 600 - margin.right - margin.left,
+          height = 300 - margin.top - margin.bottom;
+
+    // Creo el elemento SVG con el tamaño definido
+    const svg = d3.select('#grafico').append('svg')
+                  .attr('width', width + margin.left + margin.right)
+                  .attr('height', height + margin.top + margin.bottom)
+                  .append('g')
+                  .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+    // EJERCICIO: rellenar a partir de aquí...
+
+    </script>
+  </body>
+</html>
