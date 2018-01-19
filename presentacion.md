@@ -251,7 +251,7 @@ template: inverse
 ---
 ## Un ejemplo sencillo
 
-`01_ejemplo_barras.html`
+[`01_ejemplo_barras.html`](./codigo/01_ejemplo_barras.html)
 
 Selección del contenedor:
 
@@ -371,7 +371,7 @@ Es habitual tener un canvas SVG y pintar respetando los márgenes establecidos
 ---
 ## SVG
 
-`02_ejemplo_svg.html`
+[`02_ejemplo_svg.html`](./codigo/02_ejemplo_svg.html)
 
 Creación del canvas con el tamaño especificado:
 
@@ -476,7 +476,7 @@ Los datos pueden estar almacenados en un archivo o disponibles a través de una 
 ```javascript
 d3.json('ruta', (error, data) => {
   if (error) throw error;
-  
+
   // resto del código usando data ...)
 })
 ```
@@ -484,7 +484,7 @@ d3.json('ruta', (error, data) => {
 ```javascript
 d3.csv('ruta', (error, data) => {
   if (error) throw error;
-  
+
   // si tenemos que transformar a numérico
   data.forEach(d => d.contador = +d.contador);
 })
@@ -492,7 +492,7 @@ d3.csv('ruta', (error, data) => {
 ---
 ## Ejercicio
 
-Partiendo del `03_ejercicio_barras.html`, el objetivo es crear un gráfico de barras para los resultados de las elecciones generales del 2016. En el eje x tendremos cada uno de los partidos, y en el y, la cantidad de escaños obtenidos. Vamos a hacerlo poco a poco:
+Partiendo del [`03_ejercicio_barras.html`](./codigo/03_ejercicio_barras.html), el objetivo es crear un gráfico de barras para los resultados de las elecciones generales del 2016. En el eje x tendremos cada uno de los partidos, y en el y, la cantidad de escaños obtenidos. Vamos a hacerlo poco a poco:
 
 - Lee los datos de `datos/elecciones.csv`, convirtiendo a numéricas las columnas que debas. Comprueba imprimiendo por consola el resultado de la lectura
 - Crea la escala `xScale` para los datos en el eje x
@@ -503,7 +503,7 @@ Partiendo del `03_ejercicio_barras.html`, el objetivo es crear un gráfico de ba
 ---
 ## Ejercicio: ahora con chart.js
 
-Partiendo del `04_ejercicio_chartjs.html`, busca en la documentación de Chart.js cómo generar un gráfico simple de barras y píntalo. Los datos están cargados en la variable `data`.
+Partiendo del [`04_ejercicio_chartjs.html`](./codigo/04_ejercicio_chartjs.html), busca en la documentación de Chart.js cómo generar un gráfico simple de barras y píntalo. Los datos están cargados en la variable `data`.
 
 ---
 template: inverse
