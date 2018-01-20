@@ -134,7 +134,7 @@ Herramienta para elegir los colores: [colorbrewer](http://colorbrewer2.org/)
 .right-column[
   Depende de la naturaleza de la comparación.
 
-  Por defecto, escala normal. Puede ser útil también la logarítmica
+  Por defecto, escala lineal. Puede ser útil también la logarítmica
 
   ![](images/scale-log.jpg)
 ]
@@ -322,15 +322,6 @@ Esos div, deben tener una determinada anchura y texto, calculados en función al
 
     - style: el estilo. P.e. `style("fill", "blue")`
     - attr: un atributo. P.e. `attr("width", "40px")`
-
-- Tres posibles estados del join:
-
-    - enter: elementos nuevos, que no estaban
-    - update: elementos que persisten, estaban y siguen ahí
-    - exit: elementos antiguos, estaban pero ya no
-
-- Con `append("circle")` creamos elementos y con `remove("circle")` los eliminamos
-![](images/join.png)
 ]
 ---
 ## SVG
@@ -416,7 +407,8 @@ Modifica el código anterior (sobre un fichero nuevo) para que:
 ## Escalas
 
 Hasta ahora estábamos transformando los datos "a mano" para visualizarlos en el gráfico. Para pasar de nuestra magnitud al canvas del gráfico, podemos utilizar las escalas.
-
+---
+## Escalas
 ### Escala lineal
 
 ![](images/scale-range.png)
@@ -432,13 +424,11 @@ Otro ejemplo, cogiendo la escala desde el 0 hasta el máximo de los datos
 
 ```javascript
 const scale = d3.scaleLinear()
-                .domain(d3.max(data, d => d.value))
-                .range([0, 120]);
+                .domain([0, d3.max(data, d => d.value)])
+                .range([120, 0]);  // ¿por qué primero 120, luego 0?
 ```
 ---
 ## Escalas
-
-Hasta ahora estábamos transformando los datos "a mano" para visualizarlos en el gráfico. Para pasar de nuestra magnitud al canvas del gráfico, podemos utilizar las escalas.
 
 ### Escala de bandas
 
@@ -448,8 +438,8 @@ La escala de bandas es una escala ordinal que mapea valores discretos a una esca
 
 ```javascript
 const scale = d3.scaleBand()
-   	.domain(['L', 'M', 'X', 'J', 'V', 'S', 'D'])
-	  .range([0, 350])
+                .domain(['L', 'M', 'X', 'J', 'V', 'S', 'D'])
+                .range([0, 350])
 scale('J');  // resultado: 150
 ```
 ---
@@ -464,10 +454,9 @@ Son los componentes visuales asociados a una escala. Se pueden personalizar a gr
 ```javascript
 const xAxis = d3.axisBottom(xScale);
 svg.append("g")
-  .attr('transform', 'translate(0,' + height + ')')
-  .call(xAxis);
+   .attr('transform', 'translate(0,' + height + ')')
+   .call(xAxis);
 ```
-
 ---
 ## Entrada de datos
 
@@ -477,7 +466,7 @@ Los datos pueden estar almacenados en un archivo o disponibles a través de una 
 d3.json('ruta', (error, data) => {
   if (error) throw error;
 
-  // resto del código usando data ...)
+  // resto del código usando data ...
 })
 ```
 
