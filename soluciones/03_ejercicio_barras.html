@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Introducción D3.js</title>
+    <script src='https://d3js.org/d3.v4.min.js'></script>
+  </head>
+
+  <body>
+    <div id='grafico'>
+    </div>
+    <script>
+    // Definición del canvas y márgenes
+    const margin = { top: 20, right: 20, bottom: 20, left: 40 },
+          width  = 600 - margin.right - margin.left,
+          height = 300 - margin.top - margin.bottom;
+
+    // Creo el elemento SVG con el tamaño definido
+    const svg = d3.select('#grafico').append('svg')
+                  .attr('width', width + margin.left + margin.right)
+                  .attr('height', height + margin.top + margin.bottom)
+                  .append('g')
+                  .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+    // EJERCICIO: rellenar a partir de aquí...
+    const data = d3.csv('../datos/elecciones.csv', (error, data) => {
+      data.forEach(d => {
+        d.ano = +d.ano;
+        d.num_votos = +d.num_votos;
+        d.pct_votos = +d.pct_votos;
+        d.num_escanos = +d.num_escanos;
+      });
+      
+      const xScale = d3.scaleBand()
+        .domain(data.map(d => d.partido))
+        .range([0, width]);
+      
+      const yScale = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d.num_escanos)])
+        .range([height, 0]);
+
+      svg.selectAll("rect")
+        .data(data).enter().append("rect")
+        .attr("y", d => yScale(d.num_escanos))
+        .attr("x", d => xScale(d.partido))
+        .attr("width", 50)
+        .attr("height", d => height - yScale(d.num_escanos))
+        .style("fill", "green");
+
+      const xAxis = d3.axisBottom(xScale);
+      svg.append("g")
+        .attr('transform', 'translate(0,' + height + ')')
+        .call(xAxis);
+
+      const yAxis = d3.axisLeft(yScale);
+      svg.append("g")
+        .call(yAxis);
+
+      });
+
+    </script>
+  </body>
+</html>
