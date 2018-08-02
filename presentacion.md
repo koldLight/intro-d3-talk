@@ -442,6 +442,14 @@ const scale = d3.scaleBand()
                 .range([0, 350])
 scale('J');  // resultado: 150
 ```
+
+Otro ejemplo, cogiendo como dominio un atributo de los datos con `map`:
+
+```javascript
+const scale = d3.scaleBand()
+                .domain(data.map(d => d.dia_semana))
+                .range([0, 350]);
+```
 ---
 ## Ejes
 
@@ -486,7 +494,7 @@ Partiendo del [`03_ejercicio_barras.html`](./codigo/03_ejercicio_barras.html), e
 - Lee los datos de `datos/elecciones.csv`, convirtiendo a numéricas las columnas que debas. Comprueba imprimiendo por consola el resultado de la lectura
 - Crea la escala `xScale` para los datos en el eje x
 - Crea la escala `yScale` para los datos en el eje y
-- Crea las barras
+- Crea las barras. La anchura debe ser 50px
 - Pinta los ejes x e y
 
 ---
