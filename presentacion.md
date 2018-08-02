@@ -168,7 +168,7 @@ class: large
 - [Servicio militar EEUU](http://www.npr.org/2011/07/03/137536111/by-the-numbers-todays-military)
 - [Cartograma elecciones UK](http://www.viewsoftheworld.net/wp-content/uploads/2015/05/ukelection2015_mapviews.jpg)
 - [Animación envejecimiento población](http://www.pewresearch.org/files/2014/04/847889448.gif)
-- [Elecciones catalanas](http://www.huffingtonpost.es/2015/09/28/elecciones-catalanas-twitter_n_8206438.html)
+
 ---
 class: large
 ## Ejercicio: malas visualizaciones
